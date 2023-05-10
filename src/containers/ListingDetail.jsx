@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-const ListingDetail = (props) => {
+const ListingDetail = () => {
     const [listing, setListing] = useState({});
     const [realtor, setRealtor] = useState({});
     const [price, setPrice] = useState(0);
@@ -11,9 +11,11 @@ const ListingDetail = (props) => {
     const numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
-
+    const id = useParams()
+    console.log(id, "id");
+    console.log(id.id.split('-')[0], "props");
     useEffect(() => {
-        const slug = props.match.params.id;
+        const slug = id.id;
 
         const config = {
             headers: {
@@ -21,7 +23,7 @@ const ListingDetail = (props) => {
             }
         };
 
-        axios.get(`${process.env.REACT_APP_API_URL}/api/listings/${slug}`, config)
+        axios.get(`http://127.0.0.1:8000/api/listings/${slug}`, config)
         .then(res => {
             setListing(res.data);
             setPrice(numberWithCommas(res.data.price));
@@ -29,7 +31,7 @@ const ListingDetail = (props) => {
         .catch(err => {
 
         });
-    }, [props.match.params.id]);
+    }, [id]);
 
     useEffect(() => {
         const id = listing.realtor;
@@ -41,7 +43,7 @@ const ListingDetail = (props) => {
         };
 
         if (id) {
-            axios.get(`${process.env.REACT_APP_API_URL}/api/realtors/${id}`, config)
+            axios.get(`http://127.0.0.1:8000/api/realtors/${id}`, config)
             .then(res => {
                 setRealtor(res.data);
             })
