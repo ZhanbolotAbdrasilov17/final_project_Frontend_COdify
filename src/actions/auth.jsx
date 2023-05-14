@@ -19,7 +19,6 @@ export const login = (email, password) => async dispatch => {
 
     try {
         const res = await axios.post('http://127.0.0.1:8000/api/token/', body, config);
-
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -46,7 +45,7 @@ export const signup = ({ name, email, password, password2 }) => async dispatch =
 
     try {
         const res = await axios.post('http://127.0.0.1:8000/api/accounts/signup/', body, config);
-
+        console.log(res.data);
         dispatch({
             type: SIGNUP_SUCCESS,
             payload: res.data

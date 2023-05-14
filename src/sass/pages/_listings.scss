@@ -12,3 +12,21 @@
         margin-bottom: 6rem;
     }
 }
+
+.styled_error {
+    text-align: center;
+    border: 1px solid red;
+    img {
+        margin: 0 auto;
+    }
+    h3{
+        color: red;
+        font-size: 30px;
+    }
+    a {
+        color: red;
+    }
+    .phone_number{
+        cursor: pointer;
+    }
+}

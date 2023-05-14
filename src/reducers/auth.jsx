@@ -17,6 +17,7 @@ export default function(state = initialState, action) {
 
     switch(type) {
         case LOGIN_SUCCESS:
+            console.log(payload);
             localStorage.setItem('token', payload.access);
             return {
                 ...state,

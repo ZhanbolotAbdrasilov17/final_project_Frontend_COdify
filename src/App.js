@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute';
 
 
 import { Navigate, Route, Routes } from 'react-router-dom';
+import Profile from './containers/Profile';
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
                     <Route path='listings/:id' element={<ListingDetail/>} />
                     <Route path='login' element={<Login/>} />
                     <Route path='signup' element={<SignUp/>} />
+                    <Route path='profile' element={<Profile/>} />
                     <Route path='*'  element={<NotFound/>} />
             
             </Route>

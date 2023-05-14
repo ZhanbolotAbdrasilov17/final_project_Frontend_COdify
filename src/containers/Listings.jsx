@@ -7,6 +7,7 @@ import Pagination from '../components/Pagination';
 const Listings = () => {
     const [listings, setListings] = useState([]);
     const [count, setCount] = useState(0);
+    const [isError, setIsError] = useState(false)
     const [previous, setPrevious] = useState('');
     const [next, setNext] = useState('');
     const [active, setActive] = useState(1);
@@ -16,7 +17,7 @@ const Listings = () => {
 
         const fetchData = async () => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/listings/?page=1`);
+                const res = await axios.get(`http://127.0.0.1:8000/api/listings/?page=1`);
 
                 setListings(res.data.results);
                 setCount(res.data.count);
@@ -24,7 +25,7 @@ const Listings = () => {
                 setNext(res.data.next);
             }
             catch (err) {
-
+                setIsError(true)
             }
         }
 
@@ -74,7 +75,7 @@ const Listings = () => {
     };
 
     const visitPage = (page) => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/listings/?page=${page}`)
+        axios.get(`http://127.0.0.1:8000/api/listings/?page=${page}`)
         .then(res => {
             setListings(res.data.results);
             setPrevious(res.data.previous);
@@ -125,6 +126,12 @@ const Listings = () => {
             </Helmet>
             <section className='listings__listings'>
                 {displayListings()}
+                {isError && <div className='styled_error'>
+                    <img width={"500"} src="https://www.nicepng.com/png/detail/135-1358116_error-png.png" alt="" />
+                    <h3>Sorry, technical work is underway at the moment, you can contact our top manager at
+</h3>
+<h3 className='phone_number'> <a href="tel:+996700010283">+996 700 01 02 83</a></h3>
+                    </div>}
             </section>
             <section className='listings__pagination'>
                 <div className='row'>

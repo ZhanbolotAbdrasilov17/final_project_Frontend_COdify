@@ -16,6 +16,7 @@ const ListingForm = (props) => {
         open_house: 'false',
         keywords: ''
     });
+    const [isError, setIsError] = useState(false)
 
     const { sale_type, price, bedrooms, home_type, bathrooms, sqft, days_listed, has_photos, open_house, keywords } = formData;
 
@@ -42,10 +43,12 @@ const ListingForm = (props) => {
         .catch(err => {
             setLoading(false);
             window.scrollTo(0, 0);
+            setIsError(true)
         })
     };
 
     return (
+        <div>
         <form className='listingform' onSubmit={e => onSubmit(e)}>
             <div className='row'>
                 <div className='col-1-of-6'>
@@ -167,6 +170,13 @@ const ListingForm = (props) => {
                 </div>
             </div>
         </form>
+        {isError && <div className='styled_error'>
+                    <img width={"500"} src="https://www.nicepng.com/png/detail/135-1358116_error-png.png" alt="" />
+                    <h3>Sorry, technical work is underway at the moment, you can contact our top manager at
+</h3>
+<h3 className='phone_number'> <a href="tel:+996700010283">+996 700 01 02 83</a></h3>
+                    </div>}
+        </div>
     );
 };
 
