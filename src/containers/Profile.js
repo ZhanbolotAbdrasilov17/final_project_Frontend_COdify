@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Profile = ()=>{
     const [info, setinfo]=useState({
@@ -7,6 +8,7 @@ const Profile = ()=>{
         password: "",
         name: ""
     })
+    const navigate = useNavigate()
     useEffect(()=>{
         const getinfo = async ()=>{
             const {data} = await axios.get("http://127.0.0.1:8000/api/accounts/user/info/", {
@@ -26,27 +28,26 @@ const Profile = ()=>{
             [e.target.name]: value
         })
     }
-    const change= async (e)=>{
-const config = {
-    headers: {
-        'Content-Type': 'application/json',
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
-    },
-}
-        const {data} = await axios.post("http://127.0.0.1:8000/api/accounts/user/update/", 
-               
-                e, config
-            )
+    const change = async (e) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
         }
+        const {data} = await axios.post("http://127.0.0.1:8000/api/accounts/user/update/", e, config)
+    }
+
     const changeValue =(e)=>{
         e.preventDefault()
         change(info)
+        navigate("/home")
     }
-    return <div>
+    return <div className="auth_main_main">
         <form className='auth__form' onSubmit={e => changeValue(e)}>
-        <div className='auth__form__group'>
+                <div className='auth__form__group'>
                     <input
-                        className='auth__form__input'
+                        className='auth__form__input auth_main_main__input'
                         type='text'
                         placeholder='name'
                         name='name'
@@ -56,7 +57,7 @@ const config = {
                 </div>
                 <div className='auth__form__group'>
                     <input 
-                        className='auth__form__input'
+                        className='auth__form__input  auth_main_main__input'
                         type='email'
                         placeholder='Email'
                         name='email' 
@@ -64,8 +65,17 @@ const config = {
                         onChange={onChange}
                     />
                 </div>
-                
-                <button className='auth__form__button'>Редактировать</button>
+                <div className='auth__form__group'>
+                    <input 
+                        className='auth__form__input  auth_main_main__input'
+                        type='text'
+                        placeholder='Password'
+                        name='password' 
+                        value={info?.password}
+                        onChange={onChange}
+                    />
+                </div>
+                <button className='auth__form__button auth_main_btn' >Edit</button>
             </form>
     </div>
 }

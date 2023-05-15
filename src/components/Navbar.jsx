@@ -8,26 +8,26 @@ import PropTypes from 'prop-types';
 const navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <>
-         <Link className='navbar__top__auth__link' to="/profile">Profile</Link>
-        <a className='navbar__top__auth__link' onClick={logout} href='#!'>Logout</a>
+         <Link className='navbar__top__auth__link navbar__mobile navbar__mobile__btn' to="/profile">Profile</Link>
+        <a className='navbar__top__auth__link navbar__mobile navbar__mobile__btn' onClick={logout} href='#!'>Logout</a>
         </>
     );
 
     const guestLinks = (
         <Fragment>
-            <Link className='navbar__top__auth__link' to='/login'>Login</Link>
-            <Link className='navbar__top__auth__link' to='/signup'>Sign Up</Link>
+            <Link className='navbar__top__auth__link navbar__mobile navbar__mobile__btn' to='/login'>Login</Link>
+            <Link className='navbar__top__auth__link navbar__mobile navbar__mobile__btn' to='/signup'>Sign Up</Link>
         </Fragment>
     );
 
     return (
         <Fragment>
             <nav className='navbar'>
-                <div className='navbar__top'>
-                    <div className='navbar__top__logo'>
-                        <Link className='navbar__top__logo__link' to='/'>Realest Estate</Link>
+                <div className='navbar__top  navbar__mobile'>
+                    <div className='navbar__top__logo navbar__mobile navbar__mobile__title'>
+                        <Link className='navbar__top__logo__link' to='/'>Estatic</Link>
                     </div>
-                    <div className='navbar__top__auth'>
+                    <div className='navbar__top__auth navbar__mobile navbar__mobile__btn' >
                         { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>) }
                     </div>
                 </div>
