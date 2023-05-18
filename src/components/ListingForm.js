@@ -149,10 +149,7 @@ const ListingForm = (props) => {
                             <option>4+</option>
                         </select>
                     </div>
-                    <div className='listingform__altsection'>
-                        <label className='listingform__label' htmlFor='open_house'>Open Houses</label>
-                        <input className='listingform__checkbox' name='open_house' type='checkbox' onChange={e => onChange(e)} value={open_house} />
-                    </div>
+                   
                 </div>
 
                 <div className='col-1-of-6'>

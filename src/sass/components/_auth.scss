@@ -13,8 +13,12 @@
 
     &__lead {
         font-size: 2.4rem;
-        color: $color-secondary;
+        color: gray;
         margin-bottom: 2rem;
+        background-color: white;
+        padding: 10px;
+
+
     }
 
     &__form {
@@ -51,7 +55,9 @@
 
     &__authtext {
         font-size: 1.6rem;
-        color: $color-paragraph;
+        background-color: white;
+        padding: 10px;
+        color: black;
 
         &__link {
             text-decoration: none;

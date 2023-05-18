@@ -27,6 +27,10 @@
         color: $color-primary;
         font-weight: 200;
         margin-bottom: 2rem;
+        background-color: white;
+        padding: 15px;
+        border-radius: 50px;
+
     }
 
     &__paragraph {
@@ -34,6 +38,10 @@
         color: $color-paragraph;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        background-color: white;
+        padding: 20px;
+        border-radius: 50px;
+
     }
 
     &__display {
@@ -50,6 +58,10 @@
         color: $color-primary;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        background-color: white;
+        padding: 20px;
+        border-radius: 50px;
+
     }
 
     &__topseller {
@@ -57,17 +69,30 @@
         color: $color-paragraph;
         font-weight: 200;
         margin-top: 2rem;
+        background-color: white;
+        padding: 20px;
+        border-radius: 50px;
     }
 
     &__contact {
         font-size: 1.6rem;
         color: $color-tertiary;
         margin-bottom: 0.5rem;
+        background-color: white;
+        padding: 15px;
+        border-radius: 50px;
+
+
     }
 
     &__about {
         font-size: 1.6rem;
         color: $color-paragraph;
         margin-top: 1rem;
+        background-color: white;
+        padding: 15px;
+        border-radius: 50px;
+
+
     }
 }

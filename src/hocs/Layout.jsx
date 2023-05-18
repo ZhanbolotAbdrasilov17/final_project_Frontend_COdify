@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar"; 
 import { Outlet } from "react-router-dom";
-import back from '../assets/TbwR.gif'
+import back from '../assets/nw.jpg'
 
 const style = {
     position: "fixed",

@@ -50,22 +50,40 @@
         color: $color-primary;
         margin-top: 2rem;
         margin-bottom: 1rem;
+        background-color: white;
+        padding: 5px;
+        border-radius: 20px;
+
     }
 
     &__contact {
         font-size: 1.6rem;
         color: $color-tertiary;
+        background-color: white;
+        padding: 5px;
+        border-radius: 20px;
+
+
+        
     }
 
     &__about {
         font-size: 1.6rem;
         margin-top: 1rem;
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+
+
     }
 
     &__list {
         list-style: none;
         font-size: 1.6rem;
         color: $color-tertiary;
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
 
         &__item {
             margin-bottom: 1rem;
@@ -74,5 +92,9 @@
 
     &__description {
         font-size: 1.6rem;
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+
     }
 }

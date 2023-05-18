@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import Card from '../components/Card';
 import Pagination from '../components/Pagination';
+import { Skeleton } from '@mui/material';
+import styled from '@emotion/styled';
 
 const Listings = () => {
     const [listings, setListings] = useState([]);
@@ -11,18 +13,21 @@ const Listings = () => {
     const [previous, setPrevious] = useState('');
     const [next, setNext] = useState('');
     const [active, setActive] = useState(1);
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         window.scrollTo(0, 0);
 
         const fetchData = async () => {
             try {
+                setLoading(true)
                 const res = await axios.get(`http://127.0.0.1:8000/api/listings/?page=1`);
 
                 setListings(res.data.results);
                 setCount(res.data.count);
                 setPrevious(res.data.previous);
                 setNext(res.data.next);
+                setLoading(false)
             }
             catch (err) {
                 setIsError(true)
@@ -125,7 +130,13 @@ const Listings = () => {
                 />
             </Helmet>
             <section className='listings__listings'>
-                {displayListings()}
+                {loading ?
+                    <StyleSkeleton className='style_skeleton'>
+                        <Skeleton variant="rectangular" />
+                        <Skeleton variant="rectangular" />
+                        <Skeleton variant="rectangular" />
+                    </StyleSkeleton> :
+                displayListings()}
                 {isError && <div className='styled_error'>
                     <img width={"500"} src="https://www.nicepng.com/png/detail/135-1358116_error-png.png" alt="" />
                     <h3>Sorry, technical work is underway at the moment, you can contact our top manager at
@@ -151,3 +162,24 @@ const Listings = () => {
 };
 
 export default Listings;
+
+const StyleSkeleton = styled('div')`
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  gap: 5%;
+  justify-content: space-between;
+  & span {
+    background: #fff;
+    width: 83%;
+    height: 400px;
+  }
+
+  @media screen and (max-width: 700px){
+    display: block;
+    gap: 0;
+    & span {
+        width: 100%;
+    }
+  }
+`
